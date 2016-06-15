@@ -1,5 +1,5 @@
 # omniwheel-car-control
-This program is about how to set up a basic car control system with Raspberry Pi and node.js
+This program is about how to set up a omniwheel car control system with Raspberry Pi and node.js
 
 **NOTE:** This program is used to control a car that uses 4 **TOSHIBA TA7291P** chips as motor driver
 
