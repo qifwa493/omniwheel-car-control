@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+	.button {
+		border: none;
+		color: white;
+		padding: 10px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+	}
+	
+	.normal { background-color: #4CAF50; /*Green*/}
+	.special { background-color: #F44336; /*Red*/}
+	
+	p.arial {
+		font-size: 20px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	</style>
+	
+	<script src = "/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io.connect();
+		
+		socket.on("message", function (data) {
+			document.getElementById("status").innerHTML = data;
+		});
+		
+		function sendCommand(command) {
+			socket.emit("button", command);
+		}
+	</script>
+	<title>Motor Control</title>
+</head>
+<body>
+	<p class="arial" id="status" align="center">unknown</p>
+	<hr>
+	<p align="center">
+		<button class="button normal" id="frLe" onclick="sendCommand('frLe');">frLe</button>
+		<button class="button normal" id="front" onclick="sendCommand('front');">^</button>
+		<button class="button normal" id="frRi" onclick="sendCommand('frRi');">frRi</button>
+	</p>
+	<p align="center">
+		<button class="button normal" id="left" onclick="sendCommand('left');"><</button>
+		<button class="button normal" id="stop" onclick="sendCommand('stop');">o</button>
+		<button class="button normal" id="right" onclick="sendCommand('right');">></button>
+	</p>
+	<p align="center">
+		<button class="button normal" id="ccw" onclick="sendCommand('ccw');">ccw</button>
+		<button class="button normal" id="baLe" onclick="sendCommand('baLe');">baLe</button>
+		<button class="button normal" id="back" onclick="sendCommand('back');">v</button>
+		<button class="button normal" id="baRi" onclick="sendCommand('baRi');">baRi</button>
+		<button class="button normal" id="cw" onclick="sendCommand('cw');">cw</button>
+	</p>
+	<p align="center">
+		<button class="button special" id="emergencyButton" onclick="sendCommand('emStop');">Emergency Stop</button>
+	</p>
+</body>
+</html>
