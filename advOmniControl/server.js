@@ -5,21 +5,21 @@ var rpio = require("rpio");
 var port = 8080;
 var intervalId = [,,,];
 
-rpio.open(31, rpio.OUTPUT);
+rpio.open(31, rpio.OUTPUT, 0);
 console.log("GPIO 31 opened");
-rpio.open(32, rpio.OUTPUT);
+rpio.open(32, rpio.OUTPUT, 0);
 console.log("GPIO 32 opened");
-rpio.open(33, rpio.OUTPUT);
+rpio.open(33, rpio.OUTPUT, 0);
 console.log("GPIO 33 opened");
-rpio.open(35, rpio.OUTPUT);
+rpio.open(35, rpio.OUTPUT, 0);
 console.log("GPIO 35 opened");
-rpio.open(36, rpio.OUTPUT);
+rpio.open(36, rpio.OUTPUT, 0);
 console.log("GPIO 36 opened");
-rpio.open(37, rpio.OUTPUT);
+rpio.open(37, rpio.OUTPUT, 0);
 console.log("GPIO 37 opened");
-rpio.open(38, rpio.OUTPUT);
+rpio.open(38, rpio.OUTPUT, 0);
 console.log("GPIO 38 opened");
-rpio.open(40, rpio.OUTPUT);
+rpio.open(40, rpio.OUTPUT, 0);
 console.log("GPIO 40 opened");
 
 function setPin(pin, motorId, state) {
