@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+	.button {
+		border: none;
+		color: white;
+		padding: 10px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+	}
+	
+	.normal { background-color: #4CAF50; /*Green*/}
+	.special { background-color: #F44336; /*Red*/}
+	
+	p.arial {
+		font-size: 20px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	</style>
+	
+	<script src = "/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io.connect();
+		
+		socket.on("message", function (data) {
+			document.getElementById("status").innerHTML = data;
+		});
+		
+		function sendCommand(command) {
+			socket.emit("button", command);
+		}
+	</script>
+	<title>Motor Control</title>
+</head>
+<body>
+	<p class="arial" id="status" align="center">unknown</p>
+	<hr>
+	<p align="center">
+		<img id="frLeImage" onclick="sendCommand('frLe');" src="icon/frLe.png" width="100" height="100">
+		<img id="frontImage" onclick="sendCommand('front');" src="icon/front.png" width="100" height="100">
+		<img id="frRiImage" onclick="sendCommand('frRi');" src="icon/frRi.png" width="100" height="100">
+	</p>
+	<p align="center">
+		<img id="leftImage" onclick="sendCommand('left');" src="icon/left.png" width="100" height="100">
+		<img id="stopImage" onclick="sendCommand('stop');" src="icon/stop.png" width="100" height="100">
+		<img id="rightImage" onclick="sendCommand('right');" src="icon/right.png" width="100" height="100">
+	</p>
+	<p align="center">
+		<img id="ccwImage" onclick="sendCommand('ccw');" src="icon/ccw.png" width="100" height="100">
+		<img id="baLeImage" onclick="sendCommand('baLe');" src="icon/baLe.png" width="100" height="100">
+		<img id="backImage" onclick="sendCommand('back');" src="icon/back.png" width="100" height="100">
+		<img id="baRiImage" onclick="sendCommand('baRi');" src="icon/baRi.png" width="100" height="100">
+		<img id="cwImage" onclick="sendCommand('cw');" src="icon/cw.png" width="100" height="100">
+	</p>
+	<p align="center">
+		<button class="button special" id="emergencyButton" onclick="sendCommand('emStop');">Emergency Stop</button>
+	</p>
+</body>
+</html>
