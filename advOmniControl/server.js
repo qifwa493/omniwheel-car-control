@@ -5,7 +5,7 @@ var rpio = require("rpio");
 var port = 8080;
 var intervalId = [,,,];
 var speed = 10;
-var lastCommand;
+var lastCommand = 'stop';
 
 rpio.open(31, rpio.OUTPUT, 0);
 console.log("GPIO 31 opened");
