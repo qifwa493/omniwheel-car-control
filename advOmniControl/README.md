@@ -1,1 +1,1 @@
-**Change the `setInterval` time to change the speed**
+**Change the `setInterval()` time to change the speed**
