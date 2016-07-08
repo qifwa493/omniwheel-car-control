@@ -137,71 +137,69 @@ function handleCommand(command) {
 		setPin(37, 3, 0);
 		setPin(38, 4, 0);
 		setPin(40, 4, 0);
-	}
-	if(command == "front") {
+	} else if(command == "front") {
 		setMotor(1, 'on');
 		setMotor(2, 'back');
 		setMotor(3, 'back');
 		setMotor(4, 'on');
-	}
-	if(command == "stop") {
+	} else if(command == "stop") {
 		setMotor(1, 'off');
 		setMotor(2, 'off');
 		setMotor(3, 'off');
 		setMotor(4, 'off');
-	}
-	if(command == "back") {
+	} else if(command == "back") {
 		setMotor(1, 'back');
 		setMotor(2, 'on');
 		setMotor(3, 'on');
 		setMotor(4, 'back');
-	}
-	if(command == "left") {
+	} else if(command == "left") {
 		setMotor(1, 'on');
 		setMotor(2, 'on');
 		setMotor(3, 'back');
 		setMotor(4, 'back');
-	}
-	if(command == "right") {
+	} else if(command == "right") {
 		setMotor(1, 'back');
 		setMotor(2, 'back');
 		setMotor(3, 'on');
 		setMotor(4, 'on');
-	}
-	if(command == "frLe") {
+	} else if(command == "frLe") {
 		setMotor(1, 'on');
 		setMotor(2, 'off');
 		setMotor(3, 'back');
 		setMotor(4, 'off');
-	}
-	if(command == "frRi") {
+	} else if(command == "frRi") {
 		setMotor(1, 'off');
 		setMotor(2, 'back');
 		setMotor(3, 'off');
 		setMotor(4, 'on');
-	}
-	if(command == "baLe") {
+	} else if(command == "baLe") {
 		setMotor(1, 'off');
 		setMotor(2, 'on');
 		setMotor(3, 'off');
 		setMotor(4, 'back');
-	}
-	if(command == "baRi") {
+	} else if(command == "baRi") {
 		setMotor(1, 'back');
 		setMotor(2, 'off');
 		setMotor(3, 'on');
 		setMotor(4, 'off');
-	}
-	if(command == "cw") {
+	} else if(command == "cw") {
 		setMotor(1, 'back');
 		setMotor(2, 'back');
 		setMotor(3, 'back');
 		setMotor(4, 'back');
-	}
-	if(command == "ccw") {
+	} else if(command == "ccw") {
 		setMotor(1, 'on');
 		setMotor(2, 'on');
 		setMotor(3, 'on');
 		setMotor(4, 'on');
+	} else {
+		var motorId = command.slice(0,1);
+		var state = command.slice(1);
+		
+		if (motorId != '1' && motorId != '2' && motorId != '3' && motorId != '4') {
+			return;
+		}
+		
+		setMotor(motorId, state);
 	}
 }
